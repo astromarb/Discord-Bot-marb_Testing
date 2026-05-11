@@ -1,0 +1,46 @@
+bot:
+  name: "StarCitizen Hub"
+  prefix: "!"
+  activity: "Watching the Verse | /help"
+
+discord_intents:
+  message_content: true
+  members: true
+
+permissions:
+  moderator_roles:
+    - "Moderator"
+    - "Admin"
+    - "Council"
+
+server:
+  welcome_channel: "welcome"
+  rules_channel: "rules"
+  general_channel: "general"
+  introductions_channel: "introductions"
+  admin_channel: "🔒admin-events-board"
+  events_channel: "events-announcements"
+
+onboarding:
+  enabled: true
+  followup_dm_hours: 24
+  role_selection_timeout: 3600
+
+knowledge_base:
+  auto_response_enabled: false
+  min_confidence_threshold: 0.55
+  unanswered_alert_channel: "🔒admin-events-board"
+
+engagement:
+  fun_facts_interval_hours: 3
+  fun_facts_channel: "fun-facts"
+
+events:
+  default_reminder_hours: [24, 2]
+  announcement_channel: "events-announcements"
+
+moderation:
+  log_joins: true
+  log_leaves: true
+  log_role_changes: true
+  log_message_deletions: true
