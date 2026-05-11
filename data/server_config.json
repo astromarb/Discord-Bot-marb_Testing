@@ -1,0 +1,10 @@
+{
+  "guild_id": null,
+  "settings": {},
+  "custom_commands": [],
+  "stats": {
+    "total_members": 0,
+    "active_members": 0,
+    "messages_today": 0
+  }
+}

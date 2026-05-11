@@ -1,0 +1,11 @@
+welcome_dm:
+  title: "Welcome to {server_name}!"
+  description: "Welcome to the server. Read the rules, choose your interests, and ask for a crew if you want help getting started."
+followup_dm:
+  title: "How is your first day?"
+  description: "Check upcoming events with /events and introduce yourself when ready."
+event_reminder:
+  title: "Event Reminder: {event_title}"
+  description: "{event_description}"
+knowledge_response:
+  footer: "Source: local moderator-maintained knowledge base."

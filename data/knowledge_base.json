@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "last_updated": null,
+  "categories": [
+    {
+      "id": "getting-started",
+      "name": "Getting Started",
+      "description": "Resources and guides for new pilots",
+      "color": "#00FF00",
+      "entries": [
+        {
+          "id": "new-pilot-start",
+          "keywords": ["new", "newbie", "beginner", "start", "first day"],
+          "question": "I'm new to Star Citizen. Where should I start?",
+          "answer": "Start with the server rules, introduce yourself, and ask for a guide run. Good early loops are delivery, basic hauling, hand mining, or joining a crew as support.",
+          "priority": 1
+        },
+        {
+          "id": "hauling-basics",
+          "keywords": ["hauling", "cargo", "freight", "trade"],
+          "question": "How do I join a hauling operation?",
+          "answer": "Check the events channel, bring a tractor beam if you have one, confirm the route, and ask the crew lead whether they need pilots, loaders, escorts, or logistics support.",
+          "priority": 1
+        }
+      ]
+    },
+    {
+      "id": "server-info",
+      "name": "Server Info",
+      "description": "Server rules, roles, and community guidance",
+      "color": "#42A5F5",
+      "entries": []
+    }
+  ],
+  "unanswered": []
+}
