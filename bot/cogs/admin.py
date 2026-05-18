@@ -28,7 +28,7 @@ class AdminCog(commands.Cog):
         if not interaction.guild:
             return []
         channels = [ch for ch in interaction.guild.text_channels if current.lower() in ch.name.lower()]
-        return [app_commands.Choice(name=ch.name, value=ch.id) for ch in channels[:25]]
+        return [app_commands.Choice(name=ch.name, value=str(ch.id)) for ch in channels[:25]]
 
     @app_commands.command(name="announce", description="Send an announcement to a channel.")
     @moderator_only()
