@@ -71,18 +71,6 @@ class AdminCog(commands.Cog):
         text = f"Guilds: {len(self.bot.guilds)}\nKnowledge entries: {len(entries)}\nUpcoming events: {len(events)}\nLatency: {round(self.bot.latency * 1000)} ms"
         await interaction.response.send_message(embed=make_embed("Bot Stats", text), ephemeral=True)
 
-    @admin_group.command(name="reload", description="Explain reload behavior for local files and live data.")
-    @moderator_only()
-    async def admin_reload(self, interaction: discord.Interaction) -> None:
-        await interaction.response.send_message("Config files are read at startup. Restart the bot process after file edits. KB/events update live through commands.", ephemeral=True)
-
-    @admin_group.command(name="shutdown", description="Shut down the bot process. Owner only.")
-    async def admin_shutdown(self, interaction: discord.Interaction, reason: str | None = None) -> None:
-        if not interaction.guild or interaction.user.id != interaction.guild.owner_id:
-            await interaction.response.send_message("Only the server owner can shut down the bot.", ephemeral=True)
-            return
-        await interaction.response.send_message(f"Shutting down. Reason: {reason or 'not specified'}", ephemeral=True)
-        await self.bot.close()
 
 
 async def setup(bot: StarCitizenHubBot) -> None:

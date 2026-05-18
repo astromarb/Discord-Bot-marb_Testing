@@ -8,7 +8,7 @@ from bot.client import StarCitizenHubBot
 from bot.cogs.knowledge_base import moderator_only
 from bot.services.message_service import resolve_text_channel
 from bot.utils.formatters import make_embed
-from bot.utils.validators import parse_datetime
+from bot.utils.validators import parse_local_datetime
 
 
 class EventsCog(commands.Cog):
@@ -35,13 +35,14 @@ class EventsCog(commands.Cog):
     @app_commands.describe(
         title="Event title",
         description="Event description",
-        starts_at="ISO datetime, e.g. 2026-05-10T20:00:00-05:00",
+        date_time="Event date and time (server timezone). E.g. 'May 20 8:30 PM' or '05-20-2026 20:30'",
         channel="Target channel name, e.g. events-announcements",
         reminders="Comma-separated reminder hours, e.g. 24,2",
     )
-    async def event_add(self, interaction: discord.Interaction, title: str, description: str, starts_at: str, channel: str | None = None, reminders: str = "24,2") -> None:
+    async def event_add(self, interaction: discord.Interaction, title: str, description: str, date_time: str, channel: str | None = None, reminders: str = "24,2") -> None:
         try:
-            parsed = parse_datetime(starts_at)
+            tz = self.bot.config_data.get("timezone", "America/Chicago")
+            parsed = parse_local_datetime(date_time, tz)
             reminder_hours = [int(item.strip()) for item in reminders.split(",") if item.strip()]
         except ValueError as exc:
             await interaction.response.send_message(str(exc), ephemeral=True)
