@@ -44,3 +44,8 @@ moderation:
   log_leaves: true
   log_role_changes: true
   log_message_deletions: true
+
+dashboard:
+  enabled: true
+  host: "0.0.0.0"
+  port: 8080

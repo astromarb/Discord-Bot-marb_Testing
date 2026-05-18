@@ -5,7 +5,7 @@ import discord
 
 def make_embed(title: str, description: str, *, color: int = 0x4CAF50) -> discord.Embed:
     embed = discord.Embed(title=title, description=description, color=color)
-    embed.set_footer(text="StarCitizen Hub Bot")
+    embed.set_footer(text="𝘕𝘦𝘹𝘶𝘴 𝘈𝘐")
     return embed
 
 

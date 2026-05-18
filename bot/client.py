@@ -6,6 +6,7 @@ import discord
 from discord.ext import commands
 
 from bot.config import BotConfig, DATA_DIR
+from bot.services.dashboard_service import DashboardService
 from bot.services.event_service import EventService
 from bot.services.knowledge_service import KnowledgeService
 
@@ -34,6 +35,11 @@ class StarCitizenHubBot(commands.Bot):
         self.config_data = config
         self.knowledge = KnowledgeService(DATA_DIR / "knowledge_base.json")
         self.events = EventService(DATA_DIR / "events.json")
+        self.dashboard = DashboardService(
+            self,
+            host=config.get("dashboard.host", "0.0.0.0"),
+            port=int(config.get("dashboard.port", 8080)),
+        )
         self.log = logging.getLogger("starcitizen_hub.bot")
 
     async def setup_hook(self) -> None:
@@ -50,7 +56,14 @@ class StarCitizenHubBot(commands.Bot):
             synced = await self.tree.sync()
             self.log.info("Synced %s global slash commands", len(synced))
 
+        if self.config_data.get("dashboard.enabled", True):
+            await self.dashboard.start()
+
     async def on_ready(self) -> None:
         activity_text = self.config_data.get("bot.activity", "Watching the Verse")
         await self.change_presence(activity=discord.Game(name=activity_text))
         self.log.info("Logged in as %s", self.user)
+
+    async def close(self) -> None:
+        await self.dashboard.stop()
+        await super().close()
